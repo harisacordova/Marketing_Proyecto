@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diplomado en IA - UNHEVAL</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glassmorphism">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="https://posgrado.unheval.edu.pe/" target="_blank" class="flex items-center">
+                    <img src="https://www.unheval.edu.pe/biblioteca/wp-content/uploads/2019/08/logo-250.png" alt="UNHEVAL Logo" class="h-12">
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="hover:text-blue-400 transition">Inicio</a>
+                    <a href="#programa" class="hover:text-blue-400 transition">Programa</a>
+                    <a href="#profesores" class="hover:text-blue-400 transition">Profesores</a>
+                    <a href="#testimonios" class="hover:text-blue-400 transition">Testimonios</a>
+                    <a href="#costos" class="hover:text-blue-400 transition">Costos</a>
+                </div>
+            </div>
+        </div>
+    </nav> 
+
+    <!-- Hero Section con CTA e Información Rápida -->
+    <section id="inicio" class="hero-pattern min-h-screen flex items-center pt-16 bg-cover bg-center relative">
+        <div class="absolute inset-0 bg-black opacity-50"></div> <!-- Capa de color para mezclar con la imagen -->
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-center text-center md:text-left space-y-8 md:space-y-0">
+                <!-- Contenido Principal -->
+                <div class="md:w-2/3 lg:w-1/2 text-white md:mr-8">
+                    <h1 class="text-4xl lg:text-5xl font-bold mb-4">Diplomado en Inteligencia Artificial para Gestión Empresarial</h1>
+                    <p class="text-lg lg:text-xl mb-6">Transforma tu carrera con las últimas tecnologías en IA aplicadas al mundo empresarial</p>
+                    <div class="flex justify-center md:justify-start space-x-4 mb-6">
+                        <button onclick="openInscripcionModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-center">
+                            <span>Inscríbete Ahora</span>
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <a href="https://drive.google.com/file/d/17xGgEuAM-MV_kMuG58Ptf3KmWSUixqU7/view?usp=sharing" class="border border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-6 rounded-lg transition flex items-center space-x-2">
+                            <span>Descargar brochure</span>
+                        </a>
+                    </div>
+                    <div class="mt-6 bg-blue-100 p-4 rounded-lg shadow-md inline-block">
+                        <p class="text-2xl font-bold text-blue-600">
+                            <span class="line-through opacity-70">S/.6000</span>
+                            <span class="ml-2 text-3xl text-blue-700 font-bold">S/.5400</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Información Rápida junto al Texto -->
+                <div class="bg-blue-600 text-white p-4 rounded-lg md:w-1/3 lg:w-1/4">
+                    <div class="flex flex-col space-y-4 text-sm">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-calendar-alt text-white text-xl"></i>
+                            <span><strong>Fecha:</strong> Próximamente</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-chalkboard-teacher text-white text-xl"></i>
+                            <span><strong>Modalidad:</strong> Hibrido</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-hourglass-half text-white text-xl"></i>
+                            <span><strong>Duración:</strong> 5 meses | 260 horas</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-white text-xl"></i>
+                            <div>
+                                <span><strong>Horario:</strong></span>
+                                <li>Lunes: Sesión presencial (17:00 - 20:00)</li>
+                                <li>Martes: Estudio autónomo en línea (2 horas)</li>
+                                <li>Miércoles: Sesión presencial (17:00 - 20:00)</li>
+                                <li>Jueves: Estudio autónomo en línea (2 horas)</li>
+                                <li>Sábado: Sesión presencial (09:00 - 12:00)</li>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-building text-white text-xl"></i>
+                            <span><strong>Organiza:</strong> Facultad de Ingeniería Industrial y de Sistemas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Inscripción -->
+    <div id="inscripcionModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="glassmorphism p-8 w-full max-w-md">
+                <h2 class="text-2xl font-bold mb-6 gradient-text">Formulario de Inscripción</h2>
+                <form id="inscripcionForm" action="procesar_inscripcion.php" method="POST">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm mb-2">Nombre completo</label>
+                            <input type="text" name="nombre" required class="w-full bg-gray-700 rounded p-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2">Email</label>
+                            <input type="email" name="email" required class="w-full bg-gray-700 rounded p-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2">Teléfono</label>
+                            <input type="tel" name="telefono" required class="w-full bg-gray-700 rounded p-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2">Modalidad</label>
+                            <select name="modalidad" class="w-full bg-gray-700 rounded p-2">
+                                <option value="hibrido">Híbrido</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <button type="button" onclick="closeInscripcionModal()" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Enviar Inscripción
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón flotante -->
+    <button class="floating-button" onclick="toggleChat()">
+        <svg class="button-icon" viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+        </svg>
+        Chat de Información
+    </button>
+
+    <!-- Contenedor del chat -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            Chat de informacion
+            <button class="close-button" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+        <!-- Los mensajes se agregarán aquí dinámicamente -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="white">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
+     <!--Malla Curricular Desplegable-->
+     <section id="programa" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Malla Curricular</h2>
+    
+            <!-- Cronograma por meses con secciones colapsables -->
+            <div class="grid grid-cols-1 gap-4">
+    
+                <!-- Mes 1 -->
+                <div class="glassmorphism p-4">
+                    <button onclick="toggleCollapse('mes1')" class="w-full text-left text-2xl font-semibold bg-transparent hover:text-blue-400 focus:outline-none">
+                        1er mes: Bases técnicas y fundamentos teóricos
+                    </button>
+                    <div id="mes1" class="hidden mt-4">
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-2">Módulo 1: Introducción a Python para Inteligencia Artificial</h4>
+                            <p><strong>Objetivo:</strong> Aprender los conceptos básicos de programación en Python aplicados a la IA.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Contenido Temático:</strong> IDE, sintaxis básica, librerías como NumPy y Pandas.</li>
+                                <li><strong>Actividades Prácticas:</strong> Ejercicios básicos, mini-proyecto de análisis de datos.</li>
+                                <li><strong>Evaluaciones:</strong> Examen práctico.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Módulo 2: Fundamentos tecnológicos en la Inteligencia Artificial</h4>
+                            <p><strong>Objetivo:</strong> Comprender los conceptos básicos y la evolución de la IA.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Contenido Temático:</strong> Historia, machine learning, impacto social.</li>
+                                <li><strong>Actividades Prácticas:</strong> Análisis de casos y debates grupales.</li>
+                                <li><strong>Evaluaciones:</strong> Examen corto, reflexión escrita.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Mes 2 -->
+                <div class="glassmorphism p-4">
+                    <button onclick="toggleCollapse('mes2')" class="w-full text-left text-2xl font-semibold bg-transparent hover:text-blue-400 focus:outline-none">
+                        2do mes: Aplicaciones empresariales de la IA
+                    </button>
+                    <div id="mes2" class="hidden mt-4">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Módulo 3: Aplicaciones empresariales de Inteligencia Artificial</h4>
+                            <p><strong>Objetivo:</strong> Conocer las diversas aplicaciones de la IA en el ámbito empresarial.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Contenido Temático:</strong> IA en marketing, recursos humanos y finanzas.</li>
+                                <li><strong>Actividades Prácticas:</strong> Estudio de casos y diseño de propuestas.</li>
+                                <li><strong>Evaluaciones:</strong> Proyecto grupal con presentación final.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Mes 3 -->
+                <div class="glassmorphism p-4">
+                    <button onclick="toggleCollapse('mes3')" class="w-full text-left text-2xl font-semibold bg-transparent hover:text-blue-400 focus:outline-none">
+                        3er mes: Inteligencia Artificial generativa
+                    </button>
+                    <div id="mes3" class="hidden mt-4">
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-2">Módulo 4: Inteligencia Artificial generativa de texto</h4>
+                            <p><strong>Objetivo:</strong> Aprender sobre las capacidades de la IA para generar texto.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Contenido Temático:</strong> Algoritmos como GPT y aplicaciones en chatbots.</li>
+                                <li><strong>Actividades Prácticas:</strong> Talleres y desarrollo de un prototipo de chatbot.</li>
+                                <li><strong>Evaluaciones:</strong> Proyecto práctico.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Módulo 5: Inteligencia Artificial generativa de imagen, audio y video</h4>
+                            <p><strong>Objetivo:</strong> Comprender cómo la IA puede crear contenido multimedia.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Contenido Temático:</strong> GANs, herramientas como DALL-E.</li>
+                                <li><strong>Actividades Prácticas:</strong> Talleres multimedia y creación de un portafolio.</li>
+                                <li><strong>Evaluaciones:</strong> Presentación del portafolio ante un panel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Mes 4 -->
+                <div class="glassmorphism p-4">
+                    <button onclick="toggleCollapse('mes4')" class="w-full text-left text-2xl font-semibold bg-transparent hover:text-blue-400 focus:outline-none">
+                        4to mes: Herramientas prácticas y ética en la IA
+                    </button>
+                    <div id="mes4" class="hidden mt-4">
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-2">Módulo 6: Automatizaciones y otras herramientas de Inteligencia Artificial</h4>
+                            <p><strong>Objetivo:</strong> Implementar automatizaciones en procesos empresariales.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Contenido Temático:</strong> Herramientas como Zapier y Power Automate.</li>
+                                <li><strong>Actividades Prácticas:</strong> Talleres de optimización de flujos.</li>
+                                <li><strong>Evaluaciones:</strong> Proyecto práctico de automatización.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Módulo 7: Ética y responsabilidad en la Inteligencia Artificial</h4>
+                            <p><strong>Objetivo:</strong> Reflexionar sobre los aspectos éticos relacionados con la IA.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Contenido Temático:</strong> Dilemas éticos, marco regulatorio.</li>
+                                <li><strong>Actividades Prácticas:</strong> Análisis de casos y debates grupales.</li>
+                                <li><strong>Evaluaciones:</strong> Ensayo reflexivo sobre dilemas éticos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Mes 5 -->
+                <div class="glassmorphism p-4">
+                    <button onclick="toggleCollapse('mes5')" class="w-full text-left text-2xl font-semibold bg-transparent hover:text-blue-400 focus:outline-none">
+                        5to mes: Integración de conocimientos
+                    </button>
+                    <div id="mes5" class="hidden mt-4">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-2">Módulo 8: Proyecto integrado de Inteligencia Artificial</h4>
+                            <p><strong>Objetivo:</strong> Integrar los conocimientos adquiridos en un proyecto práctico.</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Contenido Temático:</strong> Herramientas colaborativas como Git y Trello.</li>
+                                <li><strong>Actividades Prácticas:</strong> Desarrollo de un prototipo funcional.</li>
+                                <li><strong>Evaluaciones:</strong> Presentación del proyecto final ante un panel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    
+    <!-- Por qué elegir nuestro programa -->
+    <section class="py-20 ">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">¿Por qué elegir nuestro programa?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glassmorphism p-6">
+                    <h3 class="text-xl font-bold mb-4">Educación de Calidad</h3>
+                    <p>Respaldado por la UNHEVAL y docentes expertos en IA</p>
+                </div>
+                <div class="glassmorphism p-6">
+                    <h3 class="text-xl font-bold mb-4">Enfoque Práctico</h3>
+                    <p>Proyectos reales y aplicaciones inmediatas en tu trabajo</p>
+                </div>
+                <div class="glassmorphism p-6">
+                    <h3 class="text-xl font-bold mb-4">Flexibilidad</h3>
+                    <p>Modalidad online con horarios adaptables</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre el Diplomado -->
+    <section class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Sobre el Diplomado</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glassmorphism p-6">
+                    <h3 class="text-2xl font-bold mb-4">Perfil del Egresado</h3>
+                    <ul class="space-y-2">
+                        <li>• Capacidad para implementar soluciones de IA en empresas</li>
+                        <li>• Dominio de herramientas de IA generativa</li>
+                        <li>• Habilidad para liderar proyectos de transformación digital</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism p-6">
+                    <h3 class="text-2xl font-bold mb-4">Dirigido a</h3>
+                    <ul class="space-y-2">
+                        <li>• Profesionales de todas las áreas</li>
+                        <li>• Emprendedores y empresarios</li>
+                        <li>• Consultores y asesores empresariales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profesores -->
+    <section id="profesores" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Nuestros Expertos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="glassmorphism p-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://imagenes.elpais.com/resizer/v2/ZVGE2DFKQRBSDHQXRSJZJYO3JA.jpeg?auth=ad9ea7ad48d0391cb560aa2efe34e028db0d851fc31548c880f8442c4585434f&width=980" 
+                            alt="Profesor 1" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold mb-2">Dr. Juan Pérez</h3>
+                        <p class="text-sm text-center mb-4">Más de 10 años en IA y análisis de datos</p>
+                        <div class="text-sm text-gray-400">
+                            <p class="mb-2"><strong>Experiencia:</strong> Consultor en tecnología y profesor universitario</p>
+                            <p><strong>Logros:</strong> Doctorado en Ciencias de la Computación</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glassmorphism p-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://after.io/_next/image?url=https://cdn.filestackcontent.com/WbjegYIvSTS90S9VAiOt&w=3840&q=75" 
+                            alt="Profesor 2" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold mb-2">Ing. María López</h3>
+                        <p class="text-sm text-center mb-4">Experta en implementación de IA en marketing y RRHH</p>
+                        <div class="text-sm text-gray-400">
+                            <p class="mb-2"><strong>Experiencia:</strong> 5 años en sector empresarial</p>
+                            <p><strong>Logros:</strong> Maestría en Inteligencia Artificial</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glassmorphism p-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTH3wTrI0Ueud7-hu85j7vef0cNOEl0u-VPGrxakDYDL2Ts8wDj" 
+                            alt="Profesor 3" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold mb-2">MSc. Carlos Fernández</h3>
+                        <p class="text-sm text-center mb-4">Especialista en análisis de datos y machine learning</p>
+                        <div class="text-sm text-gray-400">
+                            <p class="mb-2"><strong>Experiencia:</strong> Conferencista internacional en IA</p>
+                            <p><strong>Logros:</strong> Maestría en Data Science</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificación -->
+    <section class="py-20 ">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Certificación</h2>
+            <div class="glassmorphism p-8">
+                <p class="mb-4">Certificado otorgado por la escuela de posgrado de la Universidad Nacional Hermilio Valdizán</p>
+                <ul class="space-y-2">
+                    <li>• Certificado digital y físico con validez nacional</li>
+                    <li>• 260 horas académicas</li>
+                    <li>• Respaldo institucional</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Testimonios de Éxito</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="glassmorphism p-6">
+                    <div class="mb-4">
+                        <p class="text-lg italic">"Este diplomado me ayudó a profundizar mis conocimientos en IA."</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="font-bold">Harisa Cordova</p>
+                        <p class="text-sm text-gray-400">Analista de Datos - DataSolutions</p>
+                        <a href="https://www.linkedin.com/in/harisa-cordova" target="_blank" class="text-blue-500 hover:underline flex items-center mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.4c-.966 0-1.5-.653-1.5-1.5s.534-1.5 1.5-1.5c.964 0 1.5.653 1.5 1.5s-.536 1.5-1.5 1.5zm13.5 11.4h-3v-5.6c0-1.339-.478-2.25-1.682-2.25-.915 0-1.459.615-1.682 1.208-.087.208-.109.498-.109.787v5.855h-3s.039-9.5 0-10.5h3v1.5c.398-.615 1.109-1.487 2.709-1.487 1.977 0 3.463 1.307 3.463 4.115v6.372z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glassmorphism p-6">
+                    <div class="mb-4">
+                        <p class="text-lg italic">"Excelente experiencia, muy aplicable al mundo empresarial."</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="font-bold">Alisson Poma</p>
+                        <p class="text-sm text-gray-400">Consultor - Tech Innovators</p>
+                        <a href="https://www.linkedin.com/in/alisson-poma" target="_blank" class="text-blue-500 hover:underline flex items-center mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.4c-.966 0-1.5-.653-1.5-1.5s.534-1.5 1.5-1.5c.964 0 1.5.653 1.5 1.5s-.536 1.5-1.5 1.5zm13.5 11.4h-3v-5.6c0-1.339-.478-2.25-1.682-2.25-.915 0-1.459.615-1.682 1.208-.087.208-.109.498-.109.787v5.855h-3s.039-9.5 0-10.5h3v1.5c.398-.615 1.109-1.487 2.709-1.487 1.977 0 3.463 1.307 3.463 4.115v6.372z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glassmorphism p-6">
+                    <div class="mb-4">
+                        <p class="text-lg italic">"El diplomado transformó mi visión sobre la IA y su aplicación en mi empresa. Altamente recomendado."</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="font-bold">Ana Silva</p>
+                        <p class="text-sm text-gray-400">Gerente de Innovación - TechCorp</p>
+                        <a href="https://www.linkedin.com/in/alisson-poma" target="_blank" class="text-blue-500 hover:underline flex items-center mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.4c-.966 0-1.5-.653-1.5-1.5s.534-1.5 1.5-1.5c.964 0 1.5.653 1.5 1.5s-.536 1.5-1.5 1.5zm13.5 11.4h-3v-5.6c0-1.339-.478-2.25-1.682-2.25-.915 0-1.459.615-1.682 1.208-.087.208-.109.498-.109.787v5.855h-3s.039-9.5 0-10.5h3v1.5c.398-.615 1.109-1.487 2.709-1.487 1.977 0 3.463 1.307 3.463 4.115v6.372z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glassmorphism p-6">
+                    <div class="mb-4">
+                        <p class="text-lg italic">"Una experiencia educativa excepcional que me permitió implementar soluciones de IA en mi startup."</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="font-bold">Pedro Ruiz</p>
+                        <p class="text-sm text-gray-400">CEO - DataFuture</p>
+                        <a href="https://www.linkedin.com/in/alisson-poma" target="_blank" class="text-blue-500 hover:underline flex items-center mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.4c-.966 0-1.5-.653-1.5-1.5s.534-1.5 1.5-1.5c.964 0 1.5.653 1.5 1.5s-.536 1.5-1.5 1.5zm13.5 11.4h-3v-5.6c0-1.339-.478-2.25-1.682-2.25-.915 0-1.459.615-1.682 1.208-.087.208-.109.498-.109.787v5.855h-3s.039-9.5 0-10.5h3v1.5c.398-.615 1.109-1.487 2.709-1.487 1.977 0 3.463 1.307 3.463 4.115v6.372z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <div class="glassmorphism p-6">
+                    <div class="mb-4">
+                        <p class="text-lg italic">"Los conocimientos adquiridos me permitieron liderar proyectos de transformación digital con éxito."</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="font-bold">Laura Torres</p>
+                        <p class="text-sm text-gray-400">Project Manager - InnovaTech</p>
+                        <a href="https://www.linkedin.com/in/alisson-poma" target="_blank" class="text-blue-500 hover:underline flex items-center mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.4c-.966 0-1.5-.653-1.5-1.5s.534-1.5 1.5-1.5c.964 0 1.5.653 1.5 1.5s-.536 1.5-1.5 1.5zm13.5 11.4h-3v-5.6c0-1.339-.478-2.25-1.682-2.25-.915 0-1.459.615-1.682 1.208-.087.208-.109.498-.109.787v5.855h-3s.039-9.5 0-10.5h3v1.5c.398-.615 1.109-1.487 2.709-1.487 1.977 0 3.463 1.307 3.463 4.115v6.372z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulador de Costos -->
+    <section id="costos" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center gradient-text">Simulador de Costos</h2>
+            <div class="glassmorphism p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl mb-4">Calcula tu inversión</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm mb-2">Tipo de pago</label>
+                                <select id="tipoPago" class="w-full bg-gray-700 rounded p-2">
+                                    <option value="cuotas">Pago en cuotas (3 meses)</option>
+                                    <option value="unico">Pago único</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm mb-2">Descuento aplicable</label>
+                                <select id="descuento" class="w-full bg-gray-700 rounded p-2" disabled>
+                                    <option value="sin_descuento">Sin descuento</option>
+                                    <option value="anticipado">Inscripción anticipada (10%)</option>
+                                    <option value="estudiante">Estudiante UNHEVAL (15%)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glassmorphism p-6">
+                        <h3 class="text-2xl mb-4">Resumen de costos</h3>
+                        <div class="space-y-2">
+                            <p>Costo base: <span id="costoBase">S/. 6,000</span></p>
+                            <p>Descuento: <span id="ahorro">-S/. 0</span></p>
+                            <p class="text-xl font-bold text-blue-400">Total a pagar: <span id="costoFinal">S/. 6,000</span></p>
+                            <p id="cuotasInfo" class="text-sm text-gray-400 hidden">Pagos mensuales: <span id="cuotaMensual">S/. 0</span> por 3 meses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-200 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Información de la institución -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-white">UNHEVAL</h3>
+                    <p><i class="fas fa-building mr-2"></i> Razón Social: IDAT S.A.C.</p>
+                    <p><i class="fas fa-id-card mr-2"></i> RUC: 20605391738</p>
+                </div>
+                <!-- Contacto -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Contacto</h3>
+                    <p><i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:info@unheval.edu.pe" class="hover:text-blue-400">info@unheval.edu.pe</a></p>
+                    <p><i class="fas fa-phone mr-2"></i> Teléfono: (51) 123-456-789</p>
+                </div>
+                <!-- Enlaces Legales -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Enlaces Legales</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="flex items-center hover:text-blue-400"><i class="fas fa-book mr-2"></i> Libro de reclamaciones</a></li>
+                        <li><a href="#" class="flex items-center hover:text-blue-400"><i class="fas fa-shield-alt mr-2"></i> Políticas de Privacidad</a></li>
+                        <li><a href="#" class="flex items-center hover:text-blue-400"><i class="fas fa-file-contract mr-2"></i> Términos y Condiciones</a></li>
+                        <li><a href="#" class="flex items-center hover:text-blue-400"><i class="fas fa-balance-scale mr-2"></i> Portal de Transparencia</a></li>
+                        <li><a href="#" class="flex items-center hover:text-blue-400"><i class="fas fa-cookie-bite mr-2"></i> Políticas de Cookies</a></li>
+                    </ul>
+                </div>
+                <!-- Redes Sociales -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-white">Síguenos</h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="https://facebook.com/unheval" class="flex items-center hover:text-blue-400">
+                                <i class="fab fa-facebook-square text-2xl mr-2"></i> Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://linkedin.com/company/unheval" class="flex items-center hover:text-blue-400">
+                                <i class="fab fa-linkedin text-2xl mr-2"></i> LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/unheval" class="flex items-center hover:text-blue-400">
+                                <i class="fab fa-twitter-square text-2xl mr-2"></i> Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/unheval" class="flex items-center hover:text-blue-400">
+                                <i class="fab fa-instagram-square text-2xl mr-2"></i> Instagram
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <div class="mt-8 border-t border-gray-700 pt-4 text-center text-gray-500 text-sm">
+                &copy; 2024 UNHEVAL. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    <script src="sc_principal.js"></script>
+</body>
+</html>
